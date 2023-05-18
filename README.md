@@ -1,0 +1,2 @@
+# beale
+Beale Cipher checker

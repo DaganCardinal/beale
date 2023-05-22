@@ -1,11 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "../Layouts/layout.astro";
 import Form from "../components/form.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="flex flex-col justify-center align-middle">
-		<div class="m-auto">
+<Layout title="Beale Cipher Decoder">
+	<main
+		class="flex flex-col lg:flex-row justify-center align-middle w-full max-w-full"
+	>
+		<div class="m-auto mt-10 lg:w-full">
 			<Form />
 		</div>
 	</main>

@@ -1,0 +1,121 @@
+<nav
+    class="flex flex-row flex-nowrap max-w-full w-full bg-slate-200 border-b-2 border-slate-400 shadow h-16 top-0 fixed"
+>
+    <!-- Non-mobile Navbar -->
+    <div class="hidden md:flex flex-row w-full">
+        <div class="flex flex-row flex-nowrap w-full">
+            <div class="flex flex-row my-auto ms-8">
+                <p class="text-2xl">Beale Ciphers</p>
+            </div>
+            <div
+                class="flex flex-row relative w-1/5 ms-12 justify-between my-auto"
+            >
+                <div
+                    class="my-2 hover:text-slate-600 text-slate-800 transition-all duration-200 ease-in-out"
+                >
+                    <a
+                        class="text-lg font-semibold tracking-wide"
+                        href="/decoder">Decoder</a
+                    >
+                </div>
+                <div
+                    class="my-2 hover:text-slate-600 text-slate-800 transition-all duration-200 ease-in-out"
+                >
+                    <a
+                        class="text-lg font-semibold tracking-wide"
+                        href="/how-it-works">How It Works</a
+                    >
+                </div>
+                <div
+                    class="my-2 hover:text-slate-600 text-slate-800 transition-all duration-200 ease-in-out"
+                >
+                    <a class="text-lg font-semibold tracking-wide" href="/about"
+                        >The Story</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Navbar -->
+    <div class="md:hidden flex flex-row w-full px-4">
+        <div class="flex w-full justify-between">
+            <div class="flex flex-row my-auto" id="logo">
+                <p class="text-2xl">Beale Ciphers</p>
+            </div>
+            <div class="flex flex-row my-auto" id="mobileNavButton">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="h-12 w-12 fill-slate-800"
+                    id="listOpenButton"
+                    viewBox="0 0 16 16"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                    ></path>
+                </svg>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="listCloseButton"
+                    fill="currentColor"
+                    class="hidden w-10 h-10 fill-slate-800"
+                    viewBox="0 0 16 16"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"
+                    ></path>
+                    <path
+                        fill-rule="evenodd"
+                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"
+                    ></path>
+                </svg>
+            </div>
+            <div
+                class="invisible h-0 flex flex-col bg-slate-100 border-2 border-slate-400 shadow border-t-0 border-e-0 right-0 absolute top-16 w-4/5 pe-2 py-4 place-items-end rounded-sm"
+                id="mobileNavElements"
+            >
+                <div class="my-2">
+                    <a class="text-xl tracking-wide" href="/decoder">Decoder</a>
+                </div>
+                <div class="my-2">
+                    <a class="text-xl tracking-wide" href="/how-it-works"
+                        >How It Works</a
+                    >
+                </div>
+                <div class="my-2 right-0 relative">
+                    <a class="text-xl tracking-wide" href="/about">The Story</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<style>
+    #mobileNavElements.invisible {
+        filter: blur(5px);
+        transition: all 0.5s ease-in-out;
+        transform: translateX(100%);
+    }
+    #mobileNavElements {
+        filter: blur(0px);
+        transition: all 0.5s ease-in-out;
+        transform: translateX(0%);
+        height: 100vh;
+    }
+</style>
+
+<script>
+    const mobileNavElements = document.getElementById("mobileNavElements");
+    const mobileNavButton = document.getElementById("mobileNavButton");
+    const listOpenButton = document.getElementById("listOpenButton");
+    const listCloseButton = document.getElementById("listCloseButton");
+    mobileNavButton?.addEventListener("click", () => {
+        mobileNavElements?.classList.toggle("invisible");
+        listOpenButton?.classList.toggle("hidden");
+        listCloseButton?.classList.toggle("hidden");
+    });
+</script>

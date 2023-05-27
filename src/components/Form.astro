@@ -4,7 +4,7 @@
 <div class="flex flex-col w-full lg:flex-row mt-10 lg:justify-between">
     <form action="" class="lg:mx-10 mx-2 w-vw lg:w-1/2">
         <div class="flex flex-col">
-            <fieldset class="flex flex-col">
+            <fieldset class="flex flex-col text-gray-300">
                 <legend class="text-2xl">Ciphers</legend>
                 <p class="text-sm italic">
                     Select which of the Beale ciphers you would like to check
@@ -13,18 +13,25 @@
                 <div class="my-2 flex flex-row flex-wrap">
                     <input
                         type="checkbox"
-                        name="cipherOne"
                         id="cipherOneCheckbox"
-                        class="accent-teal-800"
+                        class="hidden peer"
+                        name="cipherOne"
                     />
-                    <label for="cipherOne" class="ms-2">Cipher One</label>
+                    <label
+                        for="cipherOneCheckbox"
+                        class="inline-flex justify-center w-32 p-3 border-2 rounded-lg cursor-pointer hover:text-gray-300 border-stone-600 peer-checked:border-sky-600 peer-checked:text-gray-300 text-gray-400 bg-gray-800 hover:bg-gray-700 transition-all duration-200 ease-in-out"
+                    >
+                        <div class="block">
+                            <div class="w-full">Cipher One</div>
+                        </div>
+                    </label>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-6 h-6 ms-2 cursor-pointer transition-all duration-200 ease-in-out"
+                        class="w-6 h-6 ms-2 cursor-pointer transition-all duration-200 ease-in-out my-auto"
                         id="cipherDropdown"
                     >
                         <path
@@ -87,11 +94,18 @@
                 <div class="my-2 flex flex-row flex-wrap">
                     <input
                         type="checkbox"
-                        name="cipherTwo"
                         id="cipherTwoCheckbox"
-                        class="accent-teal-800"
+                        name="cipherTwo"
+                        class="hidden peer"
                     />
-                    <label for="cipherTwo" class="ms-2">Cipher Two</label>
+                    <label
+                        for="cipherTwoCheckbox"
+                        class="inline-flex justify-center w-32 p-3 border-2 rounded-lg cursor-pointer hover:text-gray-300 border-stone-600 peer-checked:border-sky-600 peer-checked:text-gray-300 text-gray-400 bg-gray-800 hover:bg-gray-700 transition-all duration-200 ease-in-out"
+                    >
+                        <div class="block">
+                            <div class="w-full">Cipher Two</div>
+                        </div>
+                    </label>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -99,7 +113,7 @@
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-6 h-6 ms-2 cursor-pointer transition-all duration-200 ease-in-out"
+                        class="w-6 h-6 ms-2 cursor-pointer transition-all duration-200 ease-in-out my-auto"
                     >
                         <path
                             stroke-linecap="round"
@@ -186,18 +200,25 @@
                 <div class="my-2 flex flex-row flex-wrap">
                     <input
                         type="checkbox"
-                        name="cipherThree"
                         id="cipherThreeCheckbox"
-                        class="accent-teal-800"
+                        class="hidden peer"
+                        name="cipherThree"
                     />
-                    <label for="cipherThree" class="ms-2">Cipher Three</label>
+                    <label
+                        for="cipherThreeCheckbox"
+                        class="inline-flex justify-center w-32 p-3 border-2 rounded-lg cursor-pointer hover:text-gray-300 border-stone-600 peer-checked:border-sky-600 peer-checked:text-gray-300 text-gray-400 bg-gray-800 hover:bg-gray-700 transition-all duration-200 ease-in-out"
+                    >
+                        <div class="block">
+                            <div class="w-full">Cipher Three</div>
+                        </div>
+                    </label>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-6 h-6 ms-2 cursor-pointer transition-all duration-200 ease-in-out"
+                        class="w-6 h-6 ms-2 cursor-pointer transition-all duration-200 ease-in-out my-auto"
                         id="cipherDropdown"
                     >
                         <path
@@ -265,141 +286,161 @@
                     </div>
                 </div>
             </fieldset>
-            <label for="checkText" class="text-2xl mt-6">Check Text</label>
-            <p class="lg:text-sm text-md italic">
-                Enter the text you would like to check against the ciphers
-                you've selected
-            </p>
-            <textarea
-                name="checkText"
-                id="checkText"
-                rows="10"
-                maxlength="50000"
-                class="border-2 border-gray-400 rounded resize lg:w-3/4"
-            ></textarea>
-        </div>
-        <div class="my-2 flex flex-wrap">
-            <p class="text-lg lg:text-md">Options</p>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6 ms-2 cursor-pointer transition-all duration-200 ease-in-out"
-                id="cipherDropdown"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
-            </svg>
-            <div class="invisible h-0 w-full" id="cipherDropdownContent">
-                <p class="text-sm italic my-2">
-                    These are some options for adjusting your text to remove or
-                    adjust common patterns
+            <div class="mt-6 text-gray-300 w-full">
+                <label for="checkText" class="text-2xl mt-6">Check Text</label>
+                <p class="lg:text-sm text-md italic my-2">
+                    Enter the text you would like to check against the ciphers
+                    you've selected
                 </p>
-                <div class="flex flex-row mb-2">
-                    <input
-                        type="checkbox"
-                        id="lineBreaks"
-                        name="lineBreaks"
-                        class="accent-teal-800"
-                        checked
-                    />
-                    <label for="lineBreaks" class="ms-2"
-                        >Replace line breaks with spaces <span
-                            class="text-sm italic text-slate-600"
-                            >(recommended)</span
-                        ></label
-                    >
-                </div>
-                <div class="flex flex-row mb-2">
-                    <input
-                        type="checkbox"
-                        id="hyphenatedItems"
-                        name="hyphenatedItems"
-                        class="accent-teal-800"
-                    />
-                    <label for="hyphenatedItems" class="ms-2"
-                        >Split hyphenated words into two separate words</label
-                    >
-                </div>
-                <div class="flex flex-row mb-2">
-                    <input
-                        type="checkbox"
-                        id="doubleQuotationMarks"
-                        name="doubleQuotationMarks"
-                        class="accent-teal-800"
-                    />
-                    <label for="doubleQuotationMarks" class="ms-2"
-                        >Ignore double quotation marks</label
-                    >
-                </div>
-                <div class="flex flex-row mb-2">
-                    <input
-                        type="checkbox"
-                        id="singleQuotationMarks"
-                        name="singleQuotationMarks"
-                        class="accent-teal-800"
-                    />
-                    <label for="singleQuotationMarks" class="ms-2"
-                        >Ignore single quotation marks</label
-                    >
-                </div>
-                <div class="flex flex-row mb-2">
-                    <input
-                        type="checkbox"
-                        id="doubleDash"
-                        name="doubleDash"
-                        class="accent-teal-800"
-                    />
-                    <label for="doubleDash" class="ms-2"
-                        >Replace double dash with a space (--)</label
-                    >
+                <textarea
+                    name="checkText"
+                    id="checkText"
+                    rows="10"
+                    maxlength="50000"
+                    class="border-2 border-stone-500 rounded resize w-full bg-slate-800 p-2 focus:outline-0 focus:shadow-md focus:shadow-stone-600 transition-all duration-200 ease-in-out"
+                ></textarea>
+            </div>
+        </div>
+        <div class="my-2 flex flex-row justify-between text-gray-300">
+            <div class="flex flex-row">
+                <p class="text-lg lg:text-md">Options</p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6 ms-2 mt-1 cursor-pointer transition-all duration-200 ease-in-out"
+                    id="cipherDropdown"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                </svg>
+                <div
+                    class="invisible absolute mt-12 h-0 w-full"
+                    id="cipherDropdownContent"
+                >
+                    <p class="text-sm italic my-2">
+                        These are some options for adjusting your text to remove
+                        or adjust common patterns
+                    </p>
+                    <div class="flex flex-row mb-2">
+                        <input
+                            type="checkbox"
+                            id="lineBreaks"
+                            name="lineBreaks"
+                            class="accent-teal-800"
+                            checked
+                        />
+                        <label for="lineBreaks" class="ms-2"
+                            >Replace line breaks with spaces <span
+                                class="text-sm italic text-slate-600"
+                                >(recommended)</span
+                            ></label
+                        >
+                    </div>
+                    <div class="flex flex-row mb-2">
+                        <input
+                            type="checkbox"
+                            id="hyphenatedItems"
+                            name="hyphenatedItems"
+                            class="accent-teal-800"
+                        />
+                        <label for="hyphenatedItems" class="ms-2"
+                            >Split hyphenated words into two separate words</label
+                        >
+                    </div>
+                    <div class="flex flex-row mb-2">
+                        <input
+                            type="checkbox"
+                            id="doubleQuotationMarks"
+                            name="doubleQuotationMarks"
+                            class="accent-teal-800"
+                        />
+                        <label for="doubleQuotationMarks" class="ms-2"
+                            >Ignore double quotation marks</label
+                        >
+                    </div>
+                    <div class="flex flex-row mb-2">
+                        <input
+                            type="checkbox"
+                            id="singleQuotationMarks"
+                            name="singleQuotationMarks"
+                            class="accent-teal-800"
+                        />
+                        <label for="singleQuotationMarks" class="ms-2"
+                            >Ignore single quotation marks</label
+                        >
+                    </div>
+                    <div class="flex flex-row mb-2">
+                        <input
+                            type="checkbox"
+                            id="doubleDash"
+                            name="doubleDash"
+                            class="accent-teal-800"
+                        />
+                        <label for="doubleDash" class="ms-2"
+                            >Replace double dash with a space (--)</label
+                        >
+                    </div>
                 </div>
             </div>
-            <div>
+            <div class="">
                 <button
                     type="button"
-                    class="p-2 bg-teal-800 rounded text-slate-100 hover:bg-teal-600 my-4 transition-all duration-200 ease-in-out"
+                    class="p-2 bg-transparent border-2 border-stone-400 rounded text-slate-100 hover:bg-stone-400 hover:text-stone-700 transition-all duration-200 ease-in-out"
                     id="checkTextButton"
                 >
-                    Check Text
+                    Decode
                 </button>
             </div>
         </div>
     </form>
-    <div class="lg:w-1/2 lg:mx-10 mx-2">
+    <div class="lg:w-1/2 lg:mx-10 mx-2 text-gray-300">
         <h1 class="text-2xl">Results</h1>
         <div class="flex flex-col mt-4" id="results"></div>
     </div>
 </div>
 
 <script>
-    let bealeOne = document.getElementById("bealeOneText").textContent;
-    let bealeTwo = document.getElementById("bealeTwoText").textContent;
-    let bealeThree = document.getElementById("bealeThreeText").textContent;
+    let bealeOne = document.getElementById("bealeOneText")?.textContent!;
+    let bealeTwo = document.getElementById("bealeTwoText")?.textContent!;
+    let bealeThree = document.getElementById("bealeThreeText")?.textContent!;
     let resultOne = "";
     let resultTwo = "";
     let resultThree = "";
     const bealeOneArr = bealeOne.split(", ");
     const bealeTwoArr = bealeTwo.split(", ");
     const bealeThreeArr = bealeThree.split(", ");
-    const button = document.getElementById("checkTextButton");
+    const button = document.getElementById(
+        "checkTextButton"
+    )! as HTMLButtonElement;
 
-    const results = document.querySelector("#results");
+    interface CheckboxStatuses {
+        [key: string]: boolean;
+    }
+
+    const results = document.querySelector("#results")! as HTMLDivElement;
     button.addEventListener("click", () => {
-        const allCheckboxes = document.querySelectorAll("input[type=checkbox]");
-        const checkboxStatuses = {};
+        const allCheckboxes = document.querySelectorAll(
+            "input[type=checkbox]"
+        ) as NodeListOf<HTMLInputElement>;
+        const checkboxStatuses = {} as CheckboxStatuses;
 
         allCheckboxes.forEach((checkbox) => {
             checkboxStatuses[checkbox.id] = checkbox.checked;
         });
+
         resultOne = "";
         resultTwo = "";
         resultThree = "";
-        let text = document.getElementById("checkText").value;
+        let checkText = document.getElementById(
+            "checkText"
+        ) as HTMLTextAreaElement;
+        let text: any;
+        text = checkText.value;
 
         if (checkboxStatuses.lineBreaks) {
             text = text.replace(/\n+/g, " ");
@@ -453,7 +494,7 @@
         if (resultOne) {
             addToDom += `
                 <div class="mb-4" id="bealeOneResults">
-                    <h2 class="text-2xl">Beale Cipher One</h2>
+                    <h2 class="text-2xl">Cipher One</h2>
                     <p class="my-2">${resultOne}</p>
                 </div>
             `;
@@ -461,7 +502,7 @@
         if (resultTwo) {
             addToDom += `
                 <div class="mb-4" id="bealeTwoResults">
-                    <h2 class="text-2xl">Beale Cipher Two</h2>
+                    <h2 class="text-2xl">Cipher Two</h2>
                     <p class="my-2">${resultTwo}</p>
                 </div>
             `;
@@ -469,7 +510,7 @@
         if (resultThree) {
             addToDom += `
                 <div class="my-4" id="bealeThreeResults">
-                    <h2 class="text-2xl">Beale Cipher Three</h2>
+                    <h2 class="text-2xl">Cipher Three</h2>
                     <p class="my-2">${resultThree}</p>
                 </div>
             `;
@@ -478,11 +519,11 @@
     });
 
     const dropdownButtons = document.querySelectorAll("#cipherDropdown");
-    const showDropdown = ["block", "h-auto"];
+    const showDropdown = ["block", "h-auto", "bg-gray-800"];
     const hideDropdown = ["invisible", "h-0"];
     dropdownButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            let dropdown = button.nextElementSibling;
+            let dropdown = button.nextElementSibling! as HTMLElement;
             if (dropdown.classList.contains("invisible")) {
                 dropdown.classList.remove("invisible");
                 dropdown.classList.add(...showDropdown);

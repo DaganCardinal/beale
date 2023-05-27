@@ -1,16 +1,46 @@
 ---
-import Layout from "../Layouts/layout.astro";
-import Form from "../components/form.astro";
+import Layout from "../layouts/layout.astro";
+import WoodsHero from "../the-woods.jpg";
+import HeroImage from "../components/HeroImage.astro";
 ---
 
-<Layout title="Beale Cipher Decoder">
-	<main
-		class="flex flex-col lg:flex-row justify-center align-middle w-full max-w-full"
-	>
-		<div class="m-auto mt-10 lg:w-full">
-			<Form />
+<Layout title="Beale Decoder">
+	<main class="flex flex-col justify-center align-middle w-full max-w-full">
+		<div class="w-full mt-16">
+			<HeroImage
+				image={WoodsHero}
+				alt="The Woods"
+				headerText="The Beale Ciphers"
+				subheaderText="Crack the code"
+			/>
 		</div>
+		<section class="flex flex-col w-full">
+			<div class="mx-4 my-8">
+				<p class="text-center text-lg tracking-wide text-gray-200 mt-3">
+					Three ciphers that supposedly lead to a buried treasure of
+					gold, silver, and jewels. The second cipher has already been
+					cracked, can you crack the others?
+				</p>
+			</div>
+			<div class="mx-4 my-3 lg:w-1/2 lg:mx-auto">
+				<div
+					class="p-2 rounded text-center my-4 shadow hover:bg-stone-500 border-2 border-stone-500 cursor-pointer transition-all duration-200 ease-in-out hover:border-transparent text-gray-200 hover:text-stone-800"
+				>
+					<a href="/how-it-works" class="">Learn about the decoder</a>
+				</div>
+				<div
+					class="p-2 rounded text-center my-4 shadow hover:bg-stone-500 border-2 border-stone-500 cursor-pointer transition-all duration-200 ease-in-out hover:border-transparent text-gray-200 hover:text-stone-800"
+				>
+					<a href="/decoder" class="">Test your theory</a>
+				</div>
+				<div
+					class="p-2 rounded text-center my-4 shadow hover:bg-stone-500 border-2 border-stone-500 cursor-pointer transition-all duration-200 ease-in-out hover:border-transparent text-gray-200 hover:text-stone-800"
+				>
+					<a href="/about" class="">Read the story</a>
+				</div>
+			</div>
+		</section>
 	</main>
-
-	<style></style>
 </Layout>
+
+<style></style>

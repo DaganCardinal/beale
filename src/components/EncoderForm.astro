@@ -1,0 +1,41 @@
+<div class="flex flex-col w-full lg:flex-row px-2">
+    <form action="" class="w-full">
+        <div class="mt-2">
+            <label for="message" class="text-xl font-semibold"
+                >Your Message</label
+            >
+            <p class="text-sm italic mb-2">
+                Enter the message you would like to encode
+            </p>
+            <textarea
+                name="message"
+                id="message"
+                rows="10"
+                class="border-2 border-stone-500 rounded resize w-full bg-slate-800 p-2 focus:outline-0 focus:shadow-md focus:shadow-stone-600 transition-all duration-200 ease-in-out"
+            ></textarea>
+        </div>
+        <div class="mt-2">
+            <label for="key" class="text-xl font-semibold">The Key</label>
+            <p class="text-sm italic">
+                Enter the key you would like to use to encode your message
+            </p>
+            <textarea
+                name="key"
+                id="key"
+                rows="10"
+                class="border-2 border-stone-500 rounded resize w-full bg-slate-800 p-2 focus:outline-0 focus:shadow-md focus:shadow-stone-600 transition-all duration-200 ease-in-out"
+            ></textarea>
+        </div>
+        <div class="flex flex-row justify-end my-2">
+            <button
+                id="encodeButton"
+                type="button"
+                class="border-2 border-stone-400 bg-transparent p-[0.45rem] lg:p-2 rounded hover:bg-stone-400 hover:text-gray-800 transition-all duration-200 ease-in-out"
+                >Encode</button
+            >
+        </div>
+    </form>
+    <div id="results" class="w-full flex flex-col lg:flex-row my-4"></div>
+</div>
+
+<script src="../ts/encoder.ts"></script>

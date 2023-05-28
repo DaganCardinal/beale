@@ -326,14 +326,20 @@
                         These are some options for adjusting your text to remove
                         or adjust common patterns
                     </p>
-                    <div class="flex flex-row mb-2">
+                    <div
+                        class="flex-row relative inline-flex items-center cursor-pointer mb-2"
+                    >
                         <input
                             type="checkbox"
                             id="lineBreaks"
                             name="lineBreaks"
-                            class="accent-teal-800"
+                            class="hidden peer"
                             checked
                         />
+                        <div
+                            class="w-10 h-5 bg-stone-600 rounded-full peer peer-focus:ring-4 peer-focus:ring-sky-600 peer-checked:bg-sky-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"
+                        >
+                        </div>
                         <label for="lineBreaks" class="ms-2"
                             >Replace line breaks with spaces <span
                                 class="text-sm italic text-slate-600"
@@ -405,15 +411,28 @@
 </div>
 
 <script>
+    function decode(message: string, key: string) {
+        let messageArr = message.split(", ");
+        let keyArr = key.split(" ");
+        let output = "";
+
+        messageArr.forEach((letterPosition: string) => {
+            var x = keyArr[parseInt(letterPosition) - 1];
+            if (x) {
+                output += ` ${x.charAt(0).toLowerCase()}`;
+            } else {
+                output += ` ${letterPosition}`;
+            }
+        });
+        return output;
+    }
+
     let bealeOne = document.getElementById("bealeOneText")?.textContent!;
     let bealeTwo = document.getElementById("bealeTwoText")?.textContent!;
     let bealeThree = document.getElementById("bealeThreeText")?.textContent!;
     let resultOne = "";
     let resultTwo = "";
     let resultThree = "";
-    const bealeOneArr = bealeOne.split(", ");
-    const bealeTwoArr = bealeTwo.split(", ");
-    const bealeThreeArr = bealeThree.split(", ");
     const button = document.getElementById(
         "checkTextButton"
     )! as HTMLButtonElement;
@@ -433,9 +452,6 @@
             checkboxStatuses[checkbox.id] = checkbox.checked;
         });
 
-        resultOne = "";
-        resultTwo = "";
-        resultThree = "";
         let checkText = document.getElementById(
             "checkText"
         ) as HTMLTextAreaElement;
@@ -449,47 +465,27 @@
             text = text.replace(/(?<=[a-zA-Z](\-)(?=[a-zA-Z]))/g, " ");
         }
         if (checkboxStatuses.doubleQuotationMarks) {
-            text = text.replace(/"/g, "");
+            text = text.replace(/\"/g, "");
         }
         if (checkboxStatuses.singleQuotationMarks) {
-            text = text.replace(/'/g, "");
+            text = text.replace(/\'/g, "");
         }
         if (checkboxStatuses.doubleDash) {
             text = text.replaceAll("--", " ");
         }
 
-        text = text.split(" ");
-        console.log(text);
         if (checkboxStatuses.cipherOneCheckbox) {
-            bealeOneArr.forEach((position) => {
-                let word = text[parseInt(position) - 1];
-                if (word) {
-                    resultOne += ` ${word.charAt(0).toLowerCase()}`;
-                } else {
-                    resultOne += ` ${position}`;
-                }
-            });
+            resultOne = decode(bealeOne, text);
         }
+
         if (checkboxStatuses.cipherTwoCheckbox) {
-            bealeTwoArr.forEach((position) => {
-                let word = text[parseInt(position) - 1];
-                if (word) {
-                    resultTwo += ` ${word.charAt(0).toLowerCase()}`;
-                } else {
-                    resultTwo += ` ${position}`;
-                }
-            });
+            resultTwo = decode(bealeTwo, text);
         }
+
         if (checkboxStatuses.cipherThreeCheckbox) {
-            bealeThreeArr.forEach((position) => {
-                let word = text[parseInt(position) - 1];
-                if (word) {
-                    resultThree += ` ${word.charAt(0).toLowerCase()}`;
-                } else {
-                    resultThree += ` ${position}`;
-                }
-            });
+            resultThree = decode(bealeThree, text);
         }
+
         let addToDom = ``;
         if (resultOne) {
             addToDom += `

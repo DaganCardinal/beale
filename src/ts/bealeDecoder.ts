@@ -1,20 +1,5 @@
 export { }
-
-function decode(message: string, key: string) {
-    let messageArr = message.split(", ");
-    let keyArr = key.split(" ");
-    let output = "";
-
-    messageArr.forEach((letterPosition: string) => {
-        var x = keyArr[parseInt(letterPosition) - 1];
-        if (x) {
-            output += ` ${x.charAt(0).toLowerCase()}`;
-        } else {
-            output += ` ${letterPosition}`;
-        }
-    });
-    return output;
-}
+import { getCheckboxValues, decode } from "./mainFunctions";
 
 let bealeOne = document.getElementById("bealeOneText")?.textContent!;
 let bealeTwo = document.getElementById("bealeTwoText")?.textContent!;
@@ -26,20 +11,10 @@ const button = document.getElementById(
     "checkTextButton"
 )! as HTMLButtonElement;
 
-interface CheckboxStatuses {
-    [key: string]: boolean;
-}
-
 const results = document.querySelector("#results")! as HTMLDivElement;
 button.addEventListener("click", () => {
-    const allCheckboxes = document.querySelectorAll(
-        "input[type=checkbox]"
-    ) as NodeListOf<HTMLInputElement>;
-    const checkboxStatuses = {} as CheckboxStatuses;
 
-    allCheckboxes.forEach((checkbox) => {
-        checkboxStatuses[checkbox.id] = checkbox.checked;
-    });
+    let checkboxStatuses = getCheckboxValues();
 
     let checkText = document.getElementById(
         "checkText"

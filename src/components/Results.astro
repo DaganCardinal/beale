@@ -1,0 +1,22 @@
+---
+import CopyToClipboard from "../components/CopyToClipboardButton.astro";
+const { paragraphId, title } = Astro.props;
+---
+
+<div class="flex flex-col">
+    <div class="flex flex-row justify-between my-2">
+        <h2 class="text-2xl font-semibold tracking-wide">
+            {title}
+        </h2>
+        <div class="w-8 h-8 me-3" id="copyToClipboard">
+            <CopyToClipboard />
+        </div>
+    </div>
+    <div class="flex p-3 border-2 border-gray-400 rounded">
+        <p id={paragraphId}>
+            <span class="text-sm italic text-gray-500"
+                >Your results will appear here</span
+            >
+        </p>
+    </div>
+</div>

@@ -38,6 +38,8 @@ export function encode(message: string, key: string): string {
     let output = '';
     let startNum: number = 0;
 
+    console.log(keyArr)
+
     messageArr.forEach((word: string, index: number) => {
         if (index % 2 === 0) {
             // Uses random number starting point to add complexity to the cipher, divides by 2 to ensure the starting point is not too high
@@ -60,6 +62,7 @@ export function encode(message: string, key: string): string {
 
             } else {
 
+                // If it's still not found, return an error message
                 return `Letter <b>${word.charAt(0)}</b> not found in key`
 
             }
@@ -90,7 +93,7 @@ export function getCheckboxValues(): CheckboxStatuses {
 }
 
 // Gets a random number, for use in encoder function
-function getRandomNum(min: number, max: number) {
+function getRandomNum(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -107,4 +110,32 @@ function checkValidKeyMessageLength(encodedMessage: number[], key: string[]) {
     }
 
     return { isValid, keyLength, maxValue }
+}
+
+export function copyToClipboard(copyElement: HTMLElement) {
+    let text = copyElement.textContent!;
+    navigator.clipboard.writeText(text)
+        .then(() => {
+            return true
+        })
+        .catch(err => {
+            return false
+        });
+}
+
+export function formatTextWithStandardOptions(checkboxes: CheckboxStatuses, text: string): string {
+    if (checkboxes.lineBreaks) {
+        text = text.replace(/\n+/g, " ");
+    }
+    if (checkboxes.hyphenatedItems) {
+        text = text.replace(/(?<=[a-zA-Z](\-)(?=[a-zA-Z]))/g, " ");
+    }
+    if (checkboxes.quotationMarks) {
+        text = text.replace(/\"/g, "");
+        text = text.replace(/\'/g, "");
+    }
+    if (checkboxes.doubleDash) {
+        text = text.replaceAll("--", " ");
+    }
+    return text
 }

@@ -1,3 +1,7 @@
+---
+import HamburgerIcon from "../components/hamburgerIcon.astro";
+---
+
 <nav
     class="flex flex-row flex-nowrap max-w-full w-full bg-slate-700 shadow h-16 top-0 fixed z-50"
 >
@@ -60,46 +64,8 @@
                     >Beale Decoder</a
                 >
             </div>
-            <div class="flex flex-row my-auto" id="mobileNavButton">
-                <svg
-                    viewBox="0 0 100 90"
-                    id="listOpenButton"
-                    class="stroke-stone-300 stroke-[10] h-12 w-12 round"
-                >
-                    <line
-                        class="topLine line"
-                        x1="10"
-                        x2="90"
-                        y1="20"
-                        y2="20"
-                        stroke-linecap="round"
-                        stroke-dasharray="80"
-                        stroke-dashoffset="0"
-                    >
-                    </line>
-                    <line
-                        class="middleLine line"
-                        x1="10"
-                        x2="90"
-                        y1="45"
-                        y2="45"
-                        stroke-linecap="round"
-                        stroke-dasharray="80"
-                        stroke-dashoffset="0"
-                    >
-                    </line>
-                    <line
-                        class="bottomLine line"
-                        x1="90"
-                        x2="10"
-                        y1="70"
-                        y2="70"
-                        stroke-linecap="round"
-                        stroke-dasharray="80"
-                        stroke-dashoffset="0"
-                    >
-                    </line>
-                </svg>
+            <div class="h-10 w-10 flex flex-row my-auto" id="mobileNavButton">
+                <HamburgerIcon />
             </div>
             <div
                 class="invisible h-0 flex flex-col bg-slate-700 shadow right-0 absolute top-16 w-full h-vh pe-2 py-4 place-items-end"
@@ -151,67 +117,6 @@
         transition: all 0.5s ease-in-out;
         transform: translateX(0%);
         height: 100vh;
-    }
-    #mobileNavButton .line.topLine {
-        --rotation: 45deg;
-        transform-origin: 0px 30px;
-    }
-    #mobileNavButton .line.middleLine {
-        --rotation: 45deg;
-        --opacity: 0;
-        transform-origin: 35px 40px;
-    }
-    #mobileNavButton .line.bottomLine {
-        --rotation: -45deg;
-        transform-origin: 35px 75px;
-    }
-    #mobileNavButton[aria-expanded="true"]
-        :is(.topLine, .middleLine, .bottomLine) {
-        animation: to-close-icon 1s forwards;
-    }
-    #mobileNavButton[aria-expanded="false"]
-        :is(.topLine, .middleLine, .bottomLine) {
-        animation: to-burger-icon 1s forwards;
-    }
-
-    @keyframes to-close-icon {
-        0% {
-            stroke-dashoffset: 0;
-        }
-        30% {
-            stroke-dashoffset: 79;
-            rotate: calc(var(--rotation));
-        }
-        50% {
-            stroke-dashoffset: 79;
-            rotate: calc(var(--rotation));
-            opacity: calc(var(--opacity));
-        }
-        100% {
-            stroke-dashoffset: 0;
-            opacity: var(--opacity);
-            rotate: var(--rotation);
-        }
-    }
-
-    @keyframes to-burger-icon {
-        0% {
-            stroke-dashoffset: 0;
-            opacity: var(--opacity);
-            rotate: var(--rotation);
-        }
-        30% {
-            stroke-dashoffset: 79;
-            rotate: calc(var(--rotation));
-            opacity: calc(var(--opacity));
-        }
-        50% {
-            stroke-dashoffset: 79;
-            rotate: calc(var(--rotation));
-        }
-        100% {
-            stroke-dashoffset: 0;
-        }
     }
 </style>
 

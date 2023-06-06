@@ -1,12 +1,12 @@
 export { }
-import { encode, getCheckboxValues } from "./mainFunctions";
+import { encode, getCheckboxValues, copyToClipboard } from "./mainFunctions";
 
 const messageBox: HTMLInputElement = document.querySelector('#message')!;
 const keyBox: HTMLInputElement = document.querySelector('#key')!;
 
 const button = document.querySelector('#encodeButton')!;
-
-const results = document.querySelector('#results')!;
+const results = document.querySelector('#encodedMessage')! as HTMLParagraphElement;
+const copyButton = document.querySelector('#copyToClipboard')!;
 
 button.addEventListener('click', () => {
 
@@ -20,7 +20,11 @@ button.addEventListener('click', () => {
 
     const encodedMessage = encode(message, key);
 
-    results.innerHTML = `
-    <h2 class="text-xl font-semibold tracking-wide">Results</h2>
-    <p>${encodedMessage}</p>`;
+    results.innerText = encodedMessage
+})
+
+copyButton.addEventListener('click', () => {
+    let encodedMessage = document.querySelector('#encodedMessage')! as HTMLParagraphElement;
+    let copied = copyToClipboard(encodedMessage)
+
 })

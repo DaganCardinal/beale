@@ -1,0 +1,187 @@
+<svg
+    viewBox="0 0 90 90"
+    class="stroke-stone-800 dark:stroke-stone-400 stroke-[5] h-full w-full cursor-pointer transition-all ease-in-out duration-200"
+    id="clipboardButton"
+>
+    <line
+        class="leftLine clipboardLine"
+        x1="10"
+        x2="10"
+        y1="10"
+        y2="80"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="bottomLine clipboardLine"
+        x1="10"
+        x2="80"
+        y1="80"
+        y2="80"
+        stroke-linecap="round"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="rightLine clipboardLine"
+        x1="80"
+        x2="80"
+        y1="80"
+        y2="10"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="topRightLine clipboardLine"
+        x1="80"
+        x2="65"
+        y1="10"
+        y2="10"
+        stroke-linecap="round"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="topLeftLine clipboardLine"
+        x1="10"
+        x2="25"
+        y1="10"
+        y2="10"
+        stroke-linecap="round"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="clipTopLine clipboardLine"
+        x1="30"
+        x2="60"
+        y1="2"
+        y2="2"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="clipLeftLine clipboardLine"
+        x1="30"
+        x2="30"
+        y1="2"
+        y2="15"
+        stroke-width="3"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="clipBottomLine clipboardLine"
+        x1="30"
+        x2="60"
+        y1="15"
+        y2="15"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="clipRightLine clipboardLine"
+        x1="60"
+        x2="60"
+        y1="15"
+        y2="2"
+        stroke-width="3"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="plusVerticalLine clipboardLine"
+        x1="45"
+        x2="45"
+        y1="60"
+        y2="30"
+        stroke-linecap="round"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+    <line
+        class="plusHorizontalLine clipboardLine"
+        x1="30"
+        x2="60"
+        y1="45"
+        y2="45"
+        stroke-linecap="round"
+        stroke-dasharray="80"
+        stroke-dashoffset="0"></line>
+</svg>
+
+<style>
+    .clipboardTooltip {
+    }
+    #clipboardButton .clipboardLine.plusVerticalLine {
+        --rotation: 35deg;
+        --fullOffset: 79;
+        transform-origin: 65% 60%;
+        /* transform-origin: center; */
+    }
+    #clipboardButton .clipboardLine.plusHorizontalLine {
+        --rotation: 45deg;
+        --finalOffset: 65;
+        --fullOffset: 79;
+        transform-origin: 42% 50%;
+    }
+    #clipboardButton :is(.clipboardLine) {
+        animation: backToCopy 0.65s forwards;
+    }
+    #clipboardButton.copied :is(.clipboardLine) {
+        animation: copySuccess 0.65s forwards;
+    }
+    #clipboardButton.copied :is(.plusHorizontalLine, .plusVerticalLine) {
+        rotate: -1turn;
+    }
+    #clipboardButton :is(.plusHorizontalLine, .plusVerticalLine) {
+        rotate: -1turn;
+    }
+    @keyframes copySuccess {
+        0% {
+            stroke-dashoffset: 0;
+        }
+        20% {
+            stroke-dashoffset: calc(var(--fullOffset));
+            scale: 0.95;
+        }
+        40% {
+            stroke-dashoffset: calc(var(--fullOffset));
+            scale: 0.8;
+        }
+        60% {
+            rotate: calc(var(--rotation));
+            stroke-dashoffset: var(--fullOffset);
+            scale: 1.1;
+        }
+        100% {
+            rotate: var(--rotation);
+            stroke-dashoffset: var(--finalOffset);
+            translate: var(--finalTranslate);
+        }
+    }
+    @keyframes backToCopy {
+        0% {
+            stroke-dashoffset: var(--finalOffset);
+            rotate: var(--rotation);
+            translate: var(--finalTranslate);
+        }
+        20% {
+            stroke-dashoffset: calc(var(--fullOffset));
+            rotate: calc(var(--rotation));
+        }
+        40% {
+            stroke-dashoffset: calc(var(--fullOffset));
+        }
+        60% {
+            stroke-dashoffset: var(--fullOffset);
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+</style>
+
+<script>
+    const clipboardButton = document.getElementById("clipboardButton")!;
+    clipboardButton.addEventListener("click", () => {
+        clipboardButton.classList.add("copied");
+        setTimeout(() => {
+            clipboardButton.classList.remove("copied");
+        }, 3000);
+    });
+</script>

@@ -1,0 +1,88 @@
+---
+import Toggle from "../components/Toggle.astro";
+
+let { title, description, options } = Astro.props;
+
+if (!options) {
+    options = [
+        {
+            labelText: "Replace line breaks with spaces (recommended)",
+            id: "lineBreaks",
+            checked: true,
+        },
+        {
+            labelText: "Treat hyphenated words as two separate words",
+            id: "hyphenatedItems",
+        },
+        {
+            labelText: "Ignore all quotation marks",
+            id: "quotationMarks",
+        },
+        {
+            labelText: "Replace double dashes (--) with spaces",
+            id: "doubleDash",
+        },
+    ];
+}
+---
+
+<div class="flex flex-row">
+    <p class="text-lg lg:text-md">{title}</p>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 ms-2 mt-1 cursor-pointer transition-all duration-200 ease-in-out"
+        id="optionsDropdown"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+    </svg>
+    <div
+        class="invisible absolute mt-12 h-0 w-full"
+        id="optionsDropdownContent"
+    >
+        <p class="text-sm italic my-2">
+            {description}
+        </p>
+        {
+            options.map((option: any) => (
+                <div class="flex flex-row mb-2">
+                    <Toggle
+                        id={option.id}
+                        labelText={option.labelText}
+                        checked={option.checked}
+                    />
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    console.log("Options Dropdown");
+    const dropdownButtons = document.querySelectorAll("#optionsDropdown");
+    const showOptionsDropdown = ["block", "h-auto", "bg-gray-800"];
+    const hideOptionsDropdown = ["invisible", "h-0"];
+    dropdownButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            let dropdown = button.nextElementSibling! as HTMLElement;
+            if (dropdown.classList.contains("invisible")) {
+                dropdown.classList.remove("invisible");
+                dropdown.classList.add(...showOptionsDropdown);
+            } else {
+                dropdown.classList.remove(...showOptionsDropdown);
+                dropdown.classList.add(...hideOptionsDropdown);
+            }
+            if (button.classList.contains("rotate-180")) {
+                button.classList.remove("rotate-180");
+            } else {
+                button.classList.add("rotate-180");
+            }
+        });
+    });
+</script>

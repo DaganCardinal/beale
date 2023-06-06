@@ -1,5 +1,5 @@
 export { }
-import { getCheckboxValues, decode } from "./mainFunctions";
+import { getCheckboxValues, decode, formatTextWithStandardOptions } from "./mainFunctions";
 
 let bealeOne = document.getElementById("bealeOneText")?.textContent!;
 let bealeTwo = document.getElementById("bealeTwoText")?.textContent!;
@@ -22,21 +22,7 @@ button.addEventListener("click", () => {
     let text: any;
     text = checkText.value;
 
-    if (checkboxStatuses.lineBreaks) {
-        text = text.replace(/\n+/g, " ");
-    }
-    if (checkboxStatuses.hyphenatedItems) {
-        text = text.replace(/(?<=[a-zA-Z](\-)(?=[a-zA-Z]))/g, " ");
-    }
-    if (checkboxStatuses.doubleQuotationMarks) {
-        text = text.replace(/\"/g, "");
-    }
-    if (checkboxStatuses.singleQuotationMarks) {
-        text = text.replace(/\'/g, "");
-    }
-    if (checkboxStatuses.doubleDash) {
-        text = text.replaceAll("--", " ");
-    }
+    text = formatTextWithStandardOptions(checkboxStatuses, text);
 
     if (checkboxStatuses.cipherOneCheckbox) {
         resultOne = decode(bealeOne, text);

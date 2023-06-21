@@ -21,6 +21,7 @@ button.addEventListener("click", () => {
     ) as HTMLTextAreaElement;
     let text: any;
     text = checkText.value;
+    text = text.replace(/\n+/g, " ");
 
     text = formatTextWithStandardOptions(checkboxStatuses, text);
 

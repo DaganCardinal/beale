@@ -337,43 +337,54 @@ import OptionsDropdown from "../components/OptionsDropdown.astro";
             </div>
         </form>
     </div>
-    <div class="lg:w-1/2 lg:mx-10 mx-2 text-gray-300 mt-10" id="results"></div>
+    <div class="lg:w-1/2 lg:mx-10 mx-2 text-gray-300 mt-10" id="results">
+        <div class="my-3">
+            <Results title="Beale One Result" paragraphId="resultOne" />
+        </div>
+        <div class="my-3">
+            <Results title="Beale Two Result" paragraphId="resultTwo" />
+        </div>
+        <div class="my-3">
+            <Results title="Beale Three Result" paragraphId="resultThree" />
+        </div>
+
+        <script src="../ts/bealeDecoder.ts"></script>
+
+        <script>
+            const dropdownButtons =
+                document.querySelectorAll("#cipherDropdown");
+            const showDropdown = ["block", "h-auto", "bg-gray-800"];
+            const hideDropdown = ["invisible", "h-0"];
+            dropdownButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    let dropdown = button.nextElementSibling! as HTMLElement;
+                    if (dropdown.classList.contains("invisible")) {
+                        dropdown.classList.remove("invisible");
+                        dropdown.classList.add(...showDropdown);
+                    } else {
+                        dropdown.classList.remove(...showDropdown);
+                        dropdown.classList.add(...hideDropdown);
+                    }
+                    if (button.classList.contains("rotate-180")) {
+                        button.classList.remove("rotate-180");
+                    } else {
+                        button.classList.add("rotate-180");
+                    }
+                });
+            });
+        </script>
+
+        <style>
+            #cipherDropdownContent.invisible {
+                /* transition: all 0.1s ease-in-out; */
+                transform: translateY(10%);
+                filter: blur(2px);
+            }
+            #cipherDropdownContent.h-auto {
+                transition: all 0.3s ease-in-out;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        </style>
+    </div>
 </div>
-
-<script src="../ts/bealeDecoder.ts"></script>
-
-<script>
-    const dropdownButtons = document.querySelectorAll("#cipherDropdown");
-    const showDropdown = ["block", "h-auto", "bg-gray-800"];
-    const hideDropdown = ["invisible", "h-0"];
-    dropdownButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            let dropdown = button.nextElementSibling! as HTMLElement;
-            if (dropdown.classList.contains("invisible")) {
-                dropdown.classList.remove("invisible");
-                dropdown.classList.add(...showDropdown);
-            } else {
-                dropdown.classList.remove(...showDropdown);
-                dropdown.classList.add(...hideDropdown);
-            }
-            if (button.classList.contains("rotate-180")) {
-                button.classList.remove("rotate-180");
-            } else {
-                button.classList.add("rotate-180");
-            }
-        });
-    });
-</script>
-
-<style>
-    #cipherDropdownContent.invisible {
-        /* transition: all 0.1s ease-in-out; */
-        transform: translateY(10%);
-        filter: blur(2px);
-    }
-    #cipherDropdownContent.h-auto {
-        transition: all 0.3s ease-in-out;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-</style>

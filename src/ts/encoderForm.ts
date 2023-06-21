@@ -15,8 +15,14 @@ button.addEventListener('click', () => {
     key = key.toLowerCase();
     message = message.toLowerCase();
     message = message.replaceAll(" ", "")
+    // Replace new line characters with spaces
     key = key.replace(/\n+/g, " ")
     message = message.replace(/\n+/g, " ")
+    // Remove quotation marks
+    key = key.replaceAll('"', '')
+    key = key.replaceAll("'", '')
+    message = message.replaceAll('"', '')
+    message = message.replaceAll("'", '')
 
     const encodedMessage = encode(message, key);
 

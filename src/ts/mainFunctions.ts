@@ -124,9 +124,6 @@ export function copyToClipboard(copyElement: HTMLElement) {
 }
 
 export function formatTextWithStandardOptions(checkboxes: CheckboxStatuses, text: string): string {
-    if (checkboxes.lineBreaks) {
-        text = text.replace(/\n+/g, " ");
-    }
     if (checkboxes.hyphenatedItems) {
         text = text.replace(/(?<=[a-zA-Z](\-)(?=[a-zA-Z]))/g, " ");
     }

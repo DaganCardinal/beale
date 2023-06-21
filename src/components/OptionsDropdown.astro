@@ -6,12 +6,7 @@ let { title, description, options } = Astro.props;
 if (!options) {
     options = [
         {
-            labelText: "Replace line breaks with spaces (recommended)",
-            id: "lineBreaks",
-            checked: true,
-        },
-        {
-            labelText: "Treat hyphenated words as two separate words",
+            labelText: "Treat hyphenated words as two words",
             id: "hyphenatedItems",
         },
         {
@@ -42,10 +37,7 @@ if (!options) {
             stroke-linejoin="round"
             d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
     </svg>
-    <div
-        class="invisible absolute mt-12 h-0 w-full"
-        id="optionsDropdownContent"
-    >
+    <div class="invisible absolute mt-9 h-0 w-full" id="optionsDropdownContent">
         <p class="text-sm italic my-2">
             {description}
         </p>
@@ -66,7 +58,15 @@ if (!options) {
 <script>
     console.log("Options Dropdown");
     const dropdownButtons = document.querySelectorAll("#optionsDropdown");
-    const showOptionsDropdown = ["block", "h-auto", "bg-gray-800"];
+    const showOptionsDropdown = [
+        "block",
+        "h-auto",
+        "bg-gray-800",
+        "p-4",
+        "bg-opacity-75",
+        "backdrop-blur-md",
+        "rounded",
+    ];
     const hideOptionsDropdown = ["invisible", "h-0"];
     dropdownButtons.forEach((button) => {
         button.addEventListener("click", () => {

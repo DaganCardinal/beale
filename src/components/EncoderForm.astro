@@ -4,18 +4,20 @@ import Results from "../components/Results.astro";
 
 let keyOptions = [
     {
-        labelText: "Replace line breaks with spaces",
-        id: "keyLineBreaks",
-        checked: true,
+        labelText: "Break hyphenated words into two separate words",
+        id: "keyHyphenatedWords",
     },
+];
+
+let messageOptions = [
     {
-        labelText: "Treat hyphenated items as 2 separate words",
-        id: "keyHyphenatedItems",
+        labelText: "Break hyphenated words into two separate words",
+        id: "messageHyphentatedWords",
     },
 ];
 ---
 
-<div class="flex flex-col w-full lg:flex-row px-1">
+<div class="flex flex-col w-full lg:flex-row px-1 lg:px-3">
     <form action="" class="w-full">
         <div class="mt-2">
             <label for="message" class="text-xl font-semibold"
@@ -30,6 +32,11 @@ let keyOptions = [
                 rows="10"
                 class="border-2 border-stone-500 rounded resize w-full bg-slate-800 p-2 focus:outline-0 focus:shadow-md focus:shadow-stone-600 transition-all duration-200 ease-in-out"
             ></textarea>
+            <OptionsDropdown
+                title="Message Options"
+                description="Select the options you would like to use for your message"
+                options={messageOptions}
+            />
         </div>
         <div class="mt-2">
             <label for="key" class="text-xl font-semibold">The Key</label>
@@ -57,7 +64,7 @@ let keyOptions = [
             >
         </div>
     </form>
-    <div id="results" class="w-full flex flex-col my-4">
+    <div id="results" class="w-full flex flex-col my-4 lg:ps-2">
         <Results paragraphId="encodedMessage" title="Encoded Message" />
     </div>
 </div>
